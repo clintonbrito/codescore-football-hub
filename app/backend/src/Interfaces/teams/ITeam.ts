@@ -1,4 +1,4 @@
-export interface ITeamModel {
+export interface ITeam {
   id: number,
   teamName: string,
 }
