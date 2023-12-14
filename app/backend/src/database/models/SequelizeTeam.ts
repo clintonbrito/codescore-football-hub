@@ -1,7 +1,7 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize';
 import db from '.';
 
-class SequelizeTeam extends
+export default class SequelizeTeam extends
   Model<InferAttributes<SequelizeTeam>,
   InferCreationAttributes<SequelizeTeam>> {
   declare id: number;
@@ -28,5 +28,3 @@ SequelizeTeam.init(
     underscored: true,
   },
 );
-
-export default SequelizeTeam;
