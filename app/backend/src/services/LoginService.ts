@@ -1,7 +1,8 @@
-import { ILoginService } from '../Interfaces/users/ILoginService';
+import { ILoginService, IUserWithRole } from '../Interfaces/users/ILoginService';
 import { ILogin } from '../Interfaces/users/ILogin';
 import { ILoginModel } from '../Interfaces/users/ILoginModel';
 import LoginModel from '../models/LoginModel';
+import { IUser } from '../Interfaces/users/IUser';
 
 export default class LoginService {
   constructor(
@@ -18,13 +19,13 @@ export default class LoginService {
     return { status: 200, data: { token } };
   }
 
-  // public async login(credentials: ILogin): Promise<ServiceResponse<ILoginService>> {
-  //   const token = await this.loginModel.verifyUser(credentials);
+  public async getRole(user: IUser): Promise<IUserWithRole | null> {
+    const userExists = await this.loginModel.getRole(user);
 
-  //   if (!token) {
-  //     return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
-  //   }
+    if (!userExists) {
+      return null;
+    }
 
-  //   return { status: 'SUCCESSFUL', data: { token } };
-  // }
+    return { status: 200, data: userExists };
+  }
 }

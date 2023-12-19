@@ -17,4 +17,15 @@ export default class LoginController {
 
     return res.status(200).json(token.data);
   }
+
+  public async getRole(req: Request, res: Response) {
+    const user = req.body;
+    const userWithRole = await this.loginService.getRole(user);
+
+    if (userWithRole === null) {
+      return res.status(401).json({ message: 'User not found' });
+    }
+
+    return res.status(200).json(userWithRole.data);
+  }
 }
