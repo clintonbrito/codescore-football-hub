@@ -19,8 +19,8 @@ export default class LoginService {
     return { status: 200, data: { token } };
   }
 
-  public async getRole(user: IUser): Promise<IUserWithRole | null> {
-    const userExists = await this.loginModel.getRole(user);
+  public async getRole(email: IUser['email']): Promise<IUserWithRole | null> {
+    const userExists = await this.loginModel.getRole(email);
 
     if (!userExists) {
       return null;
