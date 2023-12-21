@@ -27,6 +27,8 @@ export default class TokenValidation {
         return res.status(401).json({ message: 'Token must be a valid token' });
       }
 
+      req.body.user = user;
+
       next();
     } catch (err) {
       return res.status(401).json({ message: 'Token must be a valid token' });

@@ -19,7 +19,7 @@ export default class LoginController {
   }
 
   public async getRole(req: Request, res: Response) {
-    const { email } = req.body;
+    const { email } = req.body.user;
 
     const userWithRole = await this.loginService.getRole(email);
 
