@@ -7,6 +7,12 @@ export interface ICRUDModelRead<T> {
   findById(id: number): Promise<T | null>;
 }
 
+export interface ICRUDModelReadWithQuery<T> {
+  findAll(): Promise<T[]>;
+  findAllInProgress(): Promise<T[]>;
+  findAllFinished(): Promise<T[]>;
+}
+
 export interface ICRUDModelUpdate<T> {
   update(id: number, data: T): Promise<T | null>;
 }

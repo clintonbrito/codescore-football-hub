@@ -27,7 +27,7 @@ export default class LoginController {
       return res.status(401).json({ message: 'User not found' });
     }
 
-    console.log(userWithRole.data);
+    // console.log(userWithRole.data);
 
     return res.status(200).json(userWithRole.data);
   }
