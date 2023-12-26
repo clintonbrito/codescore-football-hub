@@ -19,6 +19,21 @@ export default class MatchModel {
     return matchesWithCompleteData;
   }
 
+  public async findById(id: number): Promise<IMatch | null> {
+    const match = await this.model.findByPk(id, {
+      include: [
+        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
+        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
+      ],
+    });
+
+    if (match) {
+      return match.dataValues;
+    }
+
+    return null;
+  }
+
   public async findAllInProgress(): Promise<IMatch[]> {
     const matches = await this.model.findAll({
       where: {
@@ -49,6 +64,21 @@ export default class MatchModel {
     const matchesWithCompleteData = matches.map((match) => match.dataValues);
 
     return matchesWithCompleteData;
+  }
+
+  public async finishMatch(id: number): Promise<IMatch | null> {
+    const match = await this.model.findByPk(id, {
+      include: [
+        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
+        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
+      ],
+    });
+
+    if (match) {
+      await match.update({ inProgress: false });
+    }
+
+    return match;
   }
 
   // public async update(id: number): Promise<IMatch | null> {

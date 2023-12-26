@@ -7,11 +7,6 @@ export default class MatchController {
     private matchService = new MatchService(),
   ) { }
 
-  // public async findAll(_req: Request, res: Response) {
-  //   const matches = await this.matchService.findAll();
-  //   return res.status(mapStatusHTTP(matches.status)).json(matches.data);
-  // }
-
   public async findAll(req: Request, res: Response) {
     const { inProgress } = req.query;
 
@@ -29,9 +24,15 @@ export default class MatchController {
     return res.status(mapStatusHTTP(matches.status)).json(matches.data);
   }
 
+  public async finishMatch(req: Request, res: Response) {
+    const { id } = req.params;
+    const match = await this.matchService.finishMatch(Number(id));
+    return res.status(mapStatusHTTP(match.status)).json(match.data);
+  }
+
   // public async update(req: Request, res: Response) {
   //   const { id } = req.params;
-  //   const match = await this.matchService.findById(Number(id));
+  //   const match = await this.matchService.update(Number(id));
   //   return res.status(mapStatusHTTP(match.status)).json(match.data);
   // }
 }

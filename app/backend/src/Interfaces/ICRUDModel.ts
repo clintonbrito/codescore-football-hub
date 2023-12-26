@@ -9,8 +9,10 @@ export interface ICRUDModelRead<T> {
 
 export interface ICRUDModelReadWithQuery<T> {
   findAll(): Promise<T[]>;
+  findById(id: number): Promise<T | null>;
   findAllInProgress(): Promise<T[]>;
   findAllFinished(): Promise<T[]>;
+  finishMatch(id: number): Promise<T | null>;
 }
 
 export interface ICRUDModelUpdate<T> {

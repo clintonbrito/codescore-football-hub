@@ -1,6 +1,6 @@
 import { IMatch } from '../Interfaces/matches/IMatch';
 import { ICRUDModelReadWithQuery } from '../Interfaces/ICRUDModel';
-import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import { ServiceMessage, ServiceResponse } from '../Interfaces/ServiceResponse';
 import MatchModel from '../models/MatchModel';
 
 export default class MatchService {
@@ -13,6 +13,11 @@ export default class MatchService {
     return { status: 'SUCCESSFUL', data: matches };
   }
 
+  // public async findById(id: number): Promise<ServiceResponse<IMatch | null>> {
+  //   const match = await this.matchModel.findById(id);
+  //   return { status: 'SUCCESSFUL', data: match };
+  // }
+
   public async findAllInProgress(): Promise<ServiceResponse<IMatch[]>> {
     const matches = await this.matchModel.findAllInProgress();
     return { status: 'SUCCESSFUL', data: matches };
@@ -23,8 +28,24 @@ export default class MatchService {
     return { status: 'SUCCESSFUL', data: matches };
   }
 
+  public async finishMatch(id: number): Promise<ServiceResponse<ServiceMessage>> {
+    const match = await this.matchModel.findById(Number(id));
+
+    if (!match) {
+      return { status: 'NOT_FOUND', data: { message: 'Match not found' } };
+    }
+
+    if (!match.inProgress) {
+      return { status: 'CONFLICT', data: { message: 'Match is already finished' } };
+    }
+
+    await this.matchModel.finishMatch(Number(id));
+
+    return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
+  }
+
   // public async update(id: number): Promise<ServiceResponse<IMatch | null>> {
-  //   const match = await this.matchModel.findById(id);
+  //   const match = await this.matchModel.update(id);
   //   return { status: 'SUCCESSFUL', data: match };
   // }
 }
