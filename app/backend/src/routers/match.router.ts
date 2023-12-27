@@ -23,4 +23,10 @@ matchRouter.patch(
   (req: Request, res: Response) => matchController.update(req, res),
 );
 
+matchRouter.post(
+  '/',
+  TokenValidation.validateLogin,
+  (req: Request, res: Response) => matchController.create(req, res),
+);
+
 export default matchRouter;

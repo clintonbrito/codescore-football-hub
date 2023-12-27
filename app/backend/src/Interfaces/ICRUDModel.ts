@@ -14,6 +14,7 @@ export interface ICRUDModelReadWithQuery<T> {
   findAllFinished(): Promise<T[]>;
   finishMatch(id: number): Promise<T | null>;
   update(id: number, data: T): Promise<T | null>;
+  create(data: T): Promise<T>;
 }
 
 export interface ICRUDModelUpdate<T> {

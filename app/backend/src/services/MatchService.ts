@@ -45,23 +45,6 @@ export default class MatchService {
     return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
   }
 
-  // public async update(id: number, { homeTeamGoals: number, awayTeamGoals: number }):
-  // Promise<ServiceResponse<IMatch | null>> {
-  //   const match = await this.matchModel.findById(Number(id));
-
-  //   if (!match) {
-  //     return { status: 'NOT_FOUND', data: { message: 'Match not found' } };
-  //   }
-
-  //   if (!match.inProgress) {
-  //     return { status: 'CONFLICT', data: { message: 'Match is already finished' } };
-  //   }
-
-  //   const matchUpdated = await this.matchModel.update(id);
-
-  //   return { status: 'SUCCESSFUL', data: matchUpdated };
-  // }
-
   public async update(id: number, matchScore: IMatchScore):
   Promise<ServiceResponse<IMatch | null>> {
     const match = await this.matchModel.findById(Number(id)); // Essa chamada/validação é desnecessária? Refatorar depois
@@ -80,5 +63,25 @@ export default class MatchService {
     });
 
     return { status: 'SUCCESSFUL', data: matchUpdated };
+  }
+
+  public async create(match: IMatch): Promise<ServiceResponse<IMatch>> {
+    const homeTeamExists = await this.matchModel.findById(match.homeTeamId);
+    const awayTeamExists = await this.matchModel.findById(match.awayTeamId);
+
+    if (homeTeamExists === awayTeamExists) {
+      return {
+        status: 'UNPROCESSABLE',
+        data: { message: 'It is not possible to create a match with two equal teams' },
+      };
+    }
+
+    if (!homeTeamExists || !awayTeamExists) {
+      return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
+    }
+
+    const newMatch = await this.matchModel.create(match);
+
+    return { status: 'CREATED', data: newMatch };
   }
 }

@@ -4,7 +4,7 @@ export default class JWT {
   private static secret: Secret = process.env.JWT_SECRET || '';
 
   private static jwtConfig: SignOptions = {
-    expiresIn: '10d',
+    expiresIn: '1h',
     algorithm: 'HS256',
   };
 

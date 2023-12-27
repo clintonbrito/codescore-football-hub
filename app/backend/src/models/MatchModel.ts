@@ -82,22 +82,22 @@ export default class MatchModel {
     return match;
   }
 
-  // public async update(id: number): Promise<IMatch | null> {
-  //   const match = await this.model.findByPk(id, {
-  //     include: [
-  //       { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
-  //       { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
-  //     ],
-  //   });
-  //   return match;
-  // }
-
   public async update(id: number, matchScore: IMatchScore): Promise<IMatch | null> {
     const match = await this.model.findByPk(id);
 
     if (match) {
       await match.update(matchScore, { where: { id } });
     }
+
     return match;
+  }
+
+  public async create(match: IMatch): Promise<IMatch> {
+    const newMatch = await this.model.create({
+      ...match,
+      inProgress: true,
+    });
+
+    return newMatch;
   }
 }
