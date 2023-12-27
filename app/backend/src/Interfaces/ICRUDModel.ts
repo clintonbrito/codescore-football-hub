@@ -13,6 +13,7 @@ export interface ICRUDModelReadWithQuery<T> {
   findAllInProgress(): Promise<T[]>;
   findAllFinished(): Promise<T[]>;
   finishMatch(id: number): Promise<T | null>;
+  update(id: number, data: T): Promise<T | null>;
 }
 
 export interface ICRUDModelUpdate<T> {

@@ -17,10 +17,10 @@ matchRouter.patch(
   (req: Request, res: Response) => matchController.finishMatch(req, res),
 );
 
-// matchRouter.patch(
-//   '/:id',
-//   TokenValidation.validateLogin,
-//   (req: Request, res: Response) => matchController.update(req, res),
-// );
+matchRouter.patch(
+  '/:id',
+  TokenValidation.validateLogin,
+  (req: Request, res: Response) => matchController.update(req, res),
+);
 
 export default matchRouter;

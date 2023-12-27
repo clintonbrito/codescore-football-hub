@@ -30,9 +30,12 @@ export default class MatchController {
     return res.status(mapStatusHTTP(match.status)).json(match.data);
   }
 
-  // public async update(req: Request, res: Response) {
-  //   const { id } = req.params;
-  //   const match = await this.matchService.update(Number(id));
-  //   return res.status(mapStatusHTTP(match.status)).json(match.data);
-  // }
+  public async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+
+    const match = await this.matchService.update(Number(id), { homeTeamGoals, awayTeamGoals });
+
+    return res.status(mapStatusHTTP(match.status)).json(match.data);
+  }
 }

@@ -1,6 +1,7 @@
 import SequelizeTeam from '../database/models/SequelizeTeam';
 import { IMatch } from '../Interfaces/matches/IMatch';
 import SequelizeMatch from '../database/models/SequelizeMatch';
+import { IMatchScore } from '../Interfaces/matches/IMatchScore';
 
 export default class MatchModel {
   private model = SequelizeMatch;
@@ -90,4 +91,13 @@ export default class MatchModel {
   //   });
   //   return match;
   // }
+
+  public async update(id: number, matchScore: IMatchScore): Promise<IMatch | null> {
+    const match = await this.model.findByPk(id);
+
+    if (match) {
+      await match.update(matchScore, { where: { id } });
+    }
+    return match;
+  }
 }
