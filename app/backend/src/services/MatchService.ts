@@ -47,7 +47,7 @@ export default class MatchService {
 
   public async update(id: number, matchScore: IMatchScore):
   Promise<ServiceResponse<IMatch | null>> {
-    const match = await this.matchModel.findById(Number(id)); // Essa chamada/validação é desnecessária? Refatorar depois
+    const match = await this.matchModel.findById(Number(id));
 
     if (!match) {
       return { status: 'NOT_FOUND', data: { message: 'Match not found' } };
@@ -68,13 +68,6 @@ export default class MatchService {
   public async create(match: IMatch): Promise<ServiceResponse<IMatch>> {
     const homeTeamExists = await this.matchModel.findById(match.homeTeamId);
     const awayTeamExists = await this.matchModel.findById(match.awayTeamId);
-
-    if (homeTeamExists === awayTeamExists) {
-      return {
-        status: 'UNPROCESSABLE',
-        data: { message: 'It is not possible to create a match with two equal teams' },
-      };
-    }
 
     if (!homeTeamExists || !awayTeamExists) {
       return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
