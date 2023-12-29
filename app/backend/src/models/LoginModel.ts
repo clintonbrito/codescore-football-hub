@@ -22,6 +22,8 @@ export default class LoginModel implements ILoginModel {
       email: user.email,
     });
 
+    // console.log('Token at creation: ', token);
+
     return token;
   }
 

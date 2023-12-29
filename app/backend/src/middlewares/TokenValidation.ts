@@ -31,6 +31,7 @@ export default class TokenValidation {
 
       next();
     } catch (err) {
+      console.log(err);
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
   }
