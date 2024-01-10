@@ -11,7 +11,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 <h1 align="center">Football League Table</h1>
 
 <p align="center">
-  <img alt="preview image" src="app/frontend/src/images/positive_logo.png" width="250px">
+  <img alt="preview image" src="app/frontend/src/images/frontend-view.png">
 </p>
 
 ## 🔖 See the results
@@ -48,7 +48,7 @@ cd football-league-table
 </code></pre>
 <p>Run this command to create project's Docker container and install the dependencies:</p>
 
-<pre><code>docker compose up -d</code></pre>
+<pre><code>npm run compose:up -d</code></pre>
 
 Open your browser and access the application through the address below to view the interface locally:
 
