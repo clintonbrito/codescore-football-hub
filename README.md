@@ -14,20 +14,16 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
   <img alt="preview image" src="app/frontend/src/images/positive_logo.png" width="250px">
 </p>
 
-<br>
-
 ### 🔖 See the results
 
-<p>You can view the project through the link below:</p>
-- <a target="_blank" rel="noopener"href="https://footballtable.clintonbrito.com/">footballtable.clintonbrito.com</a>
-
+You can view the project through the link below:
 * [footballtable.clintonbrito.com](https://footballtable.clintonbrito.com)
 
-### 🧪 Technologies
+<br>
 
-<p>This project was developed using:</p>
+## 🧪 Technologies
 
-<div>
+This project was developed using:
   
   ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
   ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
@@ -42,13 +38,11 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
   ![ES Lint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
   ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-</div>
-
 <br>
 
-### 🚀 Getting started
+## 🚀 Getting started locally
 
-<p style>Clone the project and access the folder:</p>
+<p style>Clone this repository to your local machine and access the cloned directory:</p>
 <pre><code>git clone git@github.com:clintonbrito/football-league-table.git
 cd football-league-table
 </code></pre>
@@ -62,5 +56,5 @@ Open your browser and access the application through the address below to view t
 
 <br>
 
-### 📝 License
+## 📝 License
 This project is licensed under the MIT License. See the <a target="_blank" rel="noopener" href="https://github.com/clintonbrito/recipes-app/blob/5c4b1a74ab43a352c393def783f06080b7256088/LICENSE">LICENSE</a> file for details.
