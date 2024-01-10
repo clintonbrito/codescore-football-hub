@@ -48,7 +48,7 @@ cd football-league-table
 </code></pre>
 <p>Run this command to create project's Docker container and install the dependencies:</p>
 
-<pre><code>npm run compose:up -d</code></pre>
+<pre><code>npm run compose:up</code></pre>
 
 Open your browser and access the application through the address below to view the interface locally:
 
