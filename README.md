@@ -14,7 +14,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
   <img alt="preview image" src="app/frontend/src/images/positive_logo.png" width="250px">
 </p>
 
-### 🔖 See the results
+## 🔖 See the results
 
 You can view the project through the link below:
 * [footballtable.clintonbrito.com](https://footballtable.clintonbrito.com)
