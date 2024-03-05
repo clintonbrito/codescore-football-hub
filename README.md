@@ -14,13 +14,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
   <img alt="preview image" src="app/frontend/src/images/frontend-view.png">
 </p>
 
-## 🔖 See the results
-
-You can view the project through the link below:
-* [footballtable.clintonbrito.com](https://footballtable.clintonbrito.com)
-
-<br>
-
 ## 🧪 Technologies
 
 This project was developed using:
