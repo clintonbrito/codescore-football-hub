@@ -46,6 +46,8 @@ Open your browser and access the application through the address below to view t
 
 <pre><code>http://localhost:3000</code></pre>
 
+\* WIP: Deployment is work in progress
+
 <br>
 
 ## 📝 License
